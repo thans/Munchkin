@@ -38,7 +38,13 @@ public class MunchkinLevelCounter {
             System.out.println("You win! Congratulations!");
         } else {
             System.out.println("Thanks for playing " + name + ".");
-            // TODO care to tell me who won and who was playing?
+            
+            System.out.println("Care to tell me who won and who else was playing?");
+            GamePlayers players = getWinnerAndPlayers(console);
+            System.out.println("Congratulations to " + players.getWinner() + "!");
+            System.out.println("Always remember the Man and the Potted Plant");
+            // TODO track games played and won by everyone!
+            //System.out.println("Thank you!  Player information has been saved");
             
         }
 
@@ -118,5 +124,29 @@ public class MunchkinLevelCounter {
         System.out.print("What would you like your name to be this round? ");
         String name = console.nextLine();
         return name;
+    }
+    
+    private static GamePlayers getWinnerAndPlayers(Scanner console) {
+        GamePlayers players = new GamePlayers();
+        System.out.print("How many players total? ");
+        // TODO need valid input
+        int numPlayers = console.nextInt() - 1; // take out the winner
+        console.next();
+        players.setWinner(getWinner(console));
+        for (;numPlayers > 0; numPlayers--) {
+            System.out.print("The name of a loser? ");
+            try {
+                players.addPlayer(console.nextLine());
+            } catch (IllegalArgumentException e) {
+                numPlayers++;
+                System.out.println("Please try again, players must be unique and cannot already be specified as the winner");
+            }
+        }
+        return players;
+    }
+    
+    private static String getWinner(Scanner console) {
+        System.out.print("Who won? ");
+        return console.nextLine();
     }
 }
