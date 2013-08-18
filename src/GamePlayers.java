@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-/*
+/**
  * A class for managing the players in a game.  Also tracks the winner of the game.  All players must
  * be unique!
  * @author Tore Hanssen
