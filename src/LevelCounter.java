@@ -42,13 +42,42 @@ public class LevelCounter {
     }
 
     /**
+     * Increments the gear.
+     */
+    public void incGear() {
+        gear++;
+    }
+    
+    /**
+     * Increments the bonus.
+     */
+    public void incBonus() {
+        bonus++;
+    }
+    
+    /**
      * Decrements the level if the player can go lower in level.
      */
     public void decLevel() {
         if (level > STARTING_LEVEL) {
             level--;
         }
-        
+    }
+    
+    /**
+     * Decrements the gear if the player can go lower in gear.
+     */
+    public void decGear() {
+        if (gear > 0) {
+            gear--;
+        }
+    }
+    
+    /**
+     * Decrements the bonus.
+     */
+    public void decBonus() {
+        bonus--;
     }
     
     /**
